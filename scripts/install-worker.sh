@@ -152,7 +152,7 @@ sudo yum install -y yum-plugin-versionlock
 
 # install latest docker version
 # (default kubelet systemd)
-sudo amazon-linux-extras install docker
+sudo amazon-linux-extras install -y docker
 sudo yum versionlock docker-*
 
 sudo mkdir -p /etc/containerd/
@@ -168,11 +168,11 @@ sudo rm -f /etc/cni/net.d/10-containerd-net.conflist
 curl -sSL https://github.com/containerd/stargz-snapshotter/releases/download/v0.6.4/stargz-snapshotter-v0.6.4-linux-amd64.tar.gz -o - | sudo tar -xz -C /usr/local/bin
 
 # configure stargz-snapshotter plugin
-mkdir -p /etc/containerd-stargz-grpc
-touch /etc/containerd-stargz-grpc/config.toml
+sudo mkdir -p /etc/containerd-stargz-grpc
+sudo touch /etc/containerd-stargz-grpc/config.toml
 
 # Reload systemd
-systemctl daemon-reload
+sudo systemctl daemon-reload
 
 # Start containerd and stargz
 sudo systemctl enable stargz-snapshotter
