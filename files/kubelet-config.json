@@ -14,6 +14,8 @@
       "clientCAFile": "/etc/kubernetes/pki/ca.crt"
     }
   },
+  "registryPullQPS": 10,
+  "registryBurst": 20,
   "authorization": {
     "mode": "Webhook",
     "webhook": {
@@ -24,7 +26,7 @@
   "clusterDomain": "cluster.local",
   "hairpinMode": "hairpin-veth",
   "readOnlyPort": 0,
-  "cgroupDriver": "cgroupfs",
+  "cgroupDriver": "systemd",
   "cgroupRoot": "/",
   "featureGates": {
     "RotateKubeletServerCertificate": true
